@@ -1,0 +1,210 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #e9f8f3;
+  --card: #ffffff;
+  --soft: #f1faf7;
+  --border: #d5eee6;
+  --text: #17324d;
+  --muted: #5f7a8c;
+  --accent: #0d9488;
+  --accent-dark: #0a7a70;
+  --accent-soft: #d6f3ee;
+  --warm: #f59e0b;
+  --no: #a9b8c3;
+  --radius: 22px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(135deg, #e9f8f3, #eaf3ff);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.page { max-width: 1060px; margin: 0 auto; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Heading area ---------- */
+.intro { text-align: center; max-width: 620px; margin: 0 auto 1.8rem; }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; }
+h1 { font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.15; margin: .3rem 0 .7rem; }
+.lead { color: var(--muted); font-size: 1.05rem; }
+
+/* ---------- Billing switch (CSS only) ---------- */
+.billing-input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+
+.billing-toggle {
+  display: flex; width: fit-content; margin: 0 auto 2.6rem; padding: 5px;
+  background: #fff; border: 1px solid var(--border); border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, .1);
+}
+.billing-toggle label {
+  display: flex; align-items: center; gap: .5rem; padding: .6rem 1.3rem;
+  border-radius: 999px; cursor: pointer; font-weight: 600; color: var(--muted);
+  transition: background .2s, color .2s;
+}
+.save { background: #fff1d6; color: #9a6208; font-size: .72rem; padding: .1rem .5rem; border-radius: 999px; }
+
+#monthly:checked ~ .billing-toggle label[for="monthly"],
+#yearly:checked ~ .billing-toggle label[for="yearly"] { background: var(--accent); color: #fff; }
+#yearly:checked ~ .billing-toggle label[for="yearly"] .save { background: #fff; color: var(--accent-dark); }
+
+#monthly:focus-visible ~ .billing-toggle label[for="monthly"],
+#yearly:focus-visible ~ .billing-toggle label[for="yearly"] { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* Show only the prices for the selected billing period */
+#monthly:checked ~ .plans .when-yearly,
+#monthly:checked ~ .compare .when-yearly { display: none; }
+#yearly:checked ~ .plans .when-monthly,
+#yearly:checked ~ .compare .when-monthly { display: none; }
+
+/* ---------- Plans: CSS Grid, stacked on small screens ---------- */
+.plans { display: grid; grid-template-columns: 1fr; gap: 1.6rem; align-items: stretch; }
+
+@media (min-width: 800px) {
+  .plans { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+}
+
+/* ---------- Plan card (Flexbox column keeps buttons aligned at the bottom) ---------- */
+.plan {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 2rem 1.7rem 1.8rem;
+  box-shadow: 0 6px 20px rgba(23, 50, 77, .06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.plan:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(13, 148, 136, .2); border-color: #9fd9cc; }
+
+.plan-head h2 { font-size: 1.45rem; }
+.plan-tag { color: var(--muted); font-size: .92rem; margin-top: .2rem; min-height: 2.8em; }
+
+.price-box { margin: 1.2rem 0 1.4rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--border); }
+.price { display: flex; align-items: baseline; gap: .2rem; }
+.currency { font-size: 1.5rem; font-weight: 700; }
+.amount { font-size: 3.2rem; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.period { color: var(--muted); font-weight: 600; margin-left: .2rem; }
+.billing-note { color: var(--muted); font-size: .88rem; margin-top: .4rem; }
+
+/* ---------- Feature list ---------- */
+.features { list-style: none; display: grid; gap: .75rem; margin-bottom: 1.8rem; flex: 1; }
+.features li { position: relative; padding-left: 1.9rem; }
+.features li::before {
+  position: absolute; left: 0; top: .1rem; width: 1.3rem; height: 1.3rem;
+  display: grid; place-items: center; border-radius: 50%; font-size: .78rem; font-weight: 800;
+}
+.features .yes::before { content: "✓"; background: var(--accent-soft); color: var(--accent-dark); }
+.features .no { color: var(--no); text-decoration: line-through; }
+.features .no::before { content: "✕"; background: #eef2f4; color: var(--no); }
+
+/* ---------- Buttons with hover effects ---------- */
+.btn {
+  width: 100%; padding: .9rem 1rem; font: inherit; font-size: 1rem; font-weight: 700;
+  color: var(--accent-dark); background: transparent; border: 2px solid var(--accent); border-radius: 14px;
+  cursor: pointer; transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 18px rgba(13, 148, 136, .3); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+/* ---------- Highlighted "popular" plan ---------- */
+.featured {
+  border: 2px solid var(--accent);
+  background: linear-gradient(180deg, #f2fcf9, #fff 40%);
+  box-shadow: 0 16px 44px rgba(13, 148, 136, .25);
+}
+.featured .btn { background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(13, 148, 136, .3); }
+.featured .btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+.badge {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, #f59e0b, #f97316); color: #fff;
+  font-size: .82rem; font-weight: 700; padding: .35rem 1.1rem; border-radius: 999px; white-space: nowrap;
+  box-shadow: 0 6px 14px rgba(245, 158, 11, .4);
+}
+
+@media (min-width: 800px) {
+  .featured { transform: scale(1.05); z-index: 1; }
+  .featured:hover { transform: scale(1.05) translateY(-8px); }
+}
+@media (max-width: 799px) {
+  .featured { order: -1; margin-top: .6rem; } /* popular plan first on phones */
+}
+
+/* ================= Extra sections ================= */
+.section-title { text-align: center; font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin-bottom: 1.4rem; }
+.includes, .compare, .faq { margin-top: 4rem; }
+
+/* ---------- Every plan includes (Flexbox) ---------- */
+.include-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; }
+.include-list li {
+  flex: 1 1 210px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .2rem;
+  background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.3rem 1rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.include-list li:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(13, 148, 136, .15); }
+.include-list li > span:first-child { font-size: 1.8rem; }
+.include-list li > span:last-child { color: var(--muted); font-size: .9rem; }
+
+/* ---------- Comparison table ---------- */
+.table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 6px 20px rgba(23, 50, 77, .06); }
+.table-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: center; }
+th, td { padding: .95rem 1rem; border-bottom: 1px solid var(--border); }
+thead th { font-size: 1.05rem; background: var(--soft); padding-top: 1.1rem; padding-bottom: 1.1rem; }
+tbody th { text-align: left; font-weight: 600; position: sticky; left: 0; background: #fff; }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td, tbody tr:hover th { background: #f6fcfa; }
+.col-pro { background: #f2fcf9; border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+thead .col-pro { background: var(--accent); color: #fff; border-color: var(--accent); }
+tbody tr:last-child .col-pro { border-bottom: 2px solid var(--accent); }
+.mini-badge { display: inline-block; margin-left: .3rem; font-size: .68rem; background: #fff; color: var(--accent-dark); padding: .1rem .5rem; border-radius: 999px; vertical-align: middle; }
+.price-row td { font-weight: 700; font-size: 1.05rem; }
+.tick, .cross { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; font-size: .85rem; font-weight: 800; }
+.tick { background: var(--accent-soft); color: var(--accent-dark); }
+.cross { background: #eef2f4; color: var(--no); }
+
+/* ---------- FAQ (details and summary, no JavaScript) ---------- */
+.faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: .8rem; }
+.faq-item { background: #fff; border: 1px solid var(--border); border-radius: 16px; transition: border-color .2s, box-shadow .2s; }
+.faq-item[open] { border-color: var(--accent); box-shadow: 0 8px 22px rgba(13, 148, 136, .14); }
+.faq-item summary {
+  list-style: none; cursor: pointer; padding: 1.1rem 3.2rem 1.1rem 1.3rem; font-weight: 600; position: relative; border-radius: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%);
+  width: 1.7rem; height: 1.7rem; display: grid; place-items: center; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent-dark); font-size: 1.2rem; font-weight: 700;
+}
+.faq-item[open] summary::after { content: "−"; background: var(--accent); color: #fff; }
+.faq-item summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.faq-item p { padding: 0 1.3rem 1.2rem; color: var(--muted); }
+
+/* ---------- Call-to-action banner ---------- */
+.cta {
+  margin-top: 4rem; text-align: center; color: #fff; padding: 2.8rem 1.5rem;
+  background: linear-gradient(135deg, #0d9488, #14b8a6 60%, #34d3b4); border-radius: 26px;
+  box-shadow: 0 16px 40px rgba(13, 148, 136, .3);
+}
+.cta h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: .4rem; }
+.cta p { opacity: .95; margin-bottom: 1.4rem; }
+.cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem; }
+.cta .btn { width: auto; padding: .85rem 1.8rem; }
+.btn-light { background: #fff; color: var(--accent-dark); border-color: #fff; }
+.btn-light:hover { background: #f2fcf9; color: var(--accent-dark); }
+.btn-ghost { color: #fff; border-color: #fff; }
+.btn-ghost:hover { background: #fff; color: var(--accent-dark); }
+.cta .btn:focus-visible { outline-color: #fff; }
+
+.page-footer { margin-top: 2.6rem; text-align: center; color: var(--muted); font-size: .88rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
