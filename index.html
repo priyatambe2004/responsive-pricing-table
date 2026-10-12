@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive pricing table with three web hosting plans.">
+  <title>Pricing Table</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">Pricing</p>
+      <h1>Simple pricing for every project</h1>
+      <p class="lead">Pick a plan that fits your website. Switch to yearly billing and save 20%.</p>
+    </header>
+
+    <!-- CSS-only billing switch: the radio buttons change which prices are shown -->
+    <input type="radio" name="billing" id="monthly" class="billing-input" checked>
+    <input type="radio" name="billing" id="yearly" class="billing-input">
+
+    <div class="billing-toggle" role="group" aria-label="Billing period">
+      <label for="monthly">Monthly</label>
+      <label for="yearly">Yearly <span class="save">Save 20%</span></label>
+    </div>
+
+    <section class="plans" aria-label="Pricing plans">
+
+      <article class="plan" aria-labelledby="basic-title">
+        <header class="plan-head">
+          <h2 id="basic-title">Basic</h2>
+          <p class="plan-tag">For personal sites and portfolios</p>
+        </header>
+
+        <div class="price-box">
+          <p class="price when-monthly"><span class="currency">₹</span><span class="amount">199</span><span class="period">/month</span></p>
+          <p class="price when-yearly"><span class="currency">₹</span><span class="amount">159</span><span class="period">/month</span></p>
+          <p class="billing-note when-monthly">Billed monthly</p>
+          <p class="billing-note when-yearly">Billed ₹1,908 yearly</p>
+        </div>
+
+        <ul class="features">
+              <li class="yes"><span class="sr-only">Included: </span>1 website</li>
+              <li class="yes"><span class="sr-only">Included: </span>10 GB SSD storage</li>
+              <li class="yes"><span class="sr-only">Included: </span>1 email account</li>
+              <li class="yes"><span class="sr-only">Included: </span>Free SSL certificate</li>
+              <li class="no"><span class="sr-only">Not included: </span>Daily backups</li>
+              <li class="no"><span class="sr-only">Not included: </span>24/7 priority support</li>
+        </ul>
+
+        <button type="button" class="btn">Get Basic</button>
+      </article>
+
+      <article class="plan featured" aria-labelledby="pro-title">
+        <p class="badge">⭐ Most Popular</p>
+        <header class="plan-head">
+          <h2 id="pro-title">Pro</h2>
+          <p class="plan-tag">For freelancers and growing projects</p>
+        </header>
+
+        <div class="price-box">
+          <p class="price when-monthly"><span class="currency">₹</span><span class="amount">499</span><span class="period">/month</span></p>
+          <p class="price when-yearly"><span class="currency">₹</span><span class="amount">399</span><span class="period">/month</span></p>
+          <p class="billing-note when-monthly">Billed monthly</p>
+          <p class="billing-note when-yearly">Billed ₹4,788 yearly</p>
+        </div>
+
+        <ul class="features">
+              <li class="yes"><span class="sr-only">Included: </span>5 websites</li>
+              <li class="yes"><span class="sr-only">Included: </span>50 GB SSD storage</li>
+              <li class="yes"><span class="sr-only">Included: </span>10 email accounts</li>
+              <li class="yes"><span class="sr-only">Included: </span>Free SSL certificate</li>
+              <li class="yes"><span class="sr-only">Included: </span>Daily backups</li>
+              <li class="no"><span class="sr-only">Not included: </span>24/7 priority support</li>
+        </ul>
+
+        <button type="button" class="btn">Get Pro</button>
+      </article>
+
+      <article class="plan" aria-labelledby="business-title">
+        <header class="plan-head">
+          <h2 id="business-title">Business</h2>
+          <p class="plan-tag">For busy sites and small teams</p>
+        </header>
+
+        <div class="price-box">
+          <p class="price when-monthly"><span class="currency">₹</span><span class="amount">999</span><span class="period">/month</span></p>
+          <p class="price when-yearly"><span class="currency">₹</span><span class="amount">799</span><span class="period">/month</span></p>
+          <p class="billing-note when-monthly">Billed monthly</p>
+          <p class="billing-note when-yearly">Billed ₹9,588 yearly</p>
+        </div>
+
+        <ul class="features">
+              <li class="yes"><span class="sr-only">Included: </span>Unlimited websites</li>
+              <li class="yes"><span class="sr-only">Included: </span>200 GB SSD storage</li>
+              <li class="yes"><span class="sr-only">Included: </span>Unlimited email accounts</li>
+              <li class="yes"><span class="sr-only">Included: </span>Free SSL certificate</li>
+              <li class="yes"><span class="sr-only">Included: </span>Daily backups</li>
+              <li class="yes"><span class="sr-only">Included: </span>24/7 priority support</li>
+        </ul>
+
+        <button type="button" class="btn">Get Business</button>
+      </article>
+    </section>
+
+
+    <!-- Every plan includes -->
+    <section class="includes" aria-labelledby="includes-title">
+      <h2 id="includes-title" class="section-title">Every plan includes</h2>
+      <ul class="include-list">
+        <li><span aria-hidden="true">🔒</span><strong>Free SSL</strong><span>Secure padlock on every site</span></li>
+        <li><span aria-hidden="true">⚡</span><strong>Fast SSD servers</strong><span>Pages that load quickly</span></li>
+        <li><span aria-hidden="true">🛡️</span><strong>99.9% uptime</strong><span>Your site stays online</span></li>
+        <li><span aria-hidden="true">💬</span><strong>Friendly support</strong><span>Real people, clear answers</span></li>
+      </ul>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="compare" aria-labelledby="compare-title">
+      <h2 id="compare-title" class="section-title">Compare plans in detail</h2>
+      <div class="table-wrap" role="region" aria-label="Plan comparison table, scrollable" tabindex="0">
+        <table>
+          <caption class="sr-only">Feature comparison of the Basic, Pro and Business plans</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Feature</span></th>
+              <th scope="col">Basic</th>
+              <th scope="col" class="col-pro">Pro <span class="mini-badge">Popular</span></th>
+              <th scope="col">Business</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="price-row">
+              <th scope="row">Price</th>
+              <td><span class="when-monthly">₹199/mo</span><span class="when-yearly">₹159/mo</span></td>
+              <td class="col-pro"><span class="when-monthly">₹499/mo</span><span class="when-yearly">₹399/mo</span></td>
+              <td><span class="when-monthly">₹999/mo</span><span class="when-yearly">₹799/mo</span></td>
+            </tr>
+          <tr><th scope="row">Websites</th><td>1</td><td class="col-pro">5</td><td>Unlimited</td></tr>
+          <tr><th scope="row">SSD storage</th><td>10 GB</td><td class="col-pro">50 GB</td><td>200 GB</td></tr>
+          <tr><th scope="row">Email accounts</th><td>1</td><td class="col-pro">10</td><td>Unlimited</td></tr>
+          <tr><th scope="row">Monthly bandwidth</th><td>100 GB</td><td class="col-pro">500 GB</td><td>Unlimited</td></tr>
+          <tr><th scope="row">Free SSL certificate</th><td><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td><td class="col-pro"><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td></tr>
+          <tr><th scope="row">Free domain (first year)</th><td><span class="cross" aria-hidden="true">✕</span><span class="sr-only">Not included</span></td><td class="col-pro"><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td></tr>
+          <tr><th scope="row">Daily backups</th><td><span class="cross" aria-hidden="true">✕</span><span class="sr-only">Not included</span></td><td class="col-pro"><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td></tr>
+          <tr><th scope="row">One-click staging site</th><td><span class="cross" aria-hidden="true">✕</span><span class="sr-only">Not included</span></td><td class="col-pro"><span class="cross" aria-hidden="true">✕</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">✓</span><span class="sr-only">Included</span></td></tr>
+          <tr><th scope="row">Support</th><td>Email</td><td class="col-pro">Email + chat</td><td>24/7 priority</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Pricing questions</h2>
+      <div class="faq-list">
+        <details class="faq-item" name="faq">
+          <summary>Can I change my plan later?</summary>
+          <p>Yes. You can upgrade or downgrade at any time. When you upgrade, the new features are available straight away, and the price difference is adjusted on your next bill.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>What does the 30-day money-back guarantee cover?</summary>
+          <p>If you are not happy with your plan within the first 30 days, you can ask for a full refund. No questions asked.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Is there a free trial?</summary>
+          <p>The Pro plan includes a 14-day free trial, so you can try daily backups and extra storage before you pay.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>How does yearly billing work?</summary>
+          <p>You pay once for the full year and save 20% compared with paying monthly. The yearly total is shown under each price.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Which payment methods do you accept?</summary>
+          <p>We accept UPI, debit and credit cards, and net banking.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Do you offer help with moving my website?</summary>
+          <p>Yes. Pro and Business plans include free website migration, and our team will move your files for you.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="cta" aria-labelledby="cta-title">
+      <h2 id="cta-title">Not sure which plan to pick?</h2>
+      <p>Start with Pro free for 14 days. Cancel any time.</p>
+      <div class="cta-buttons">
+        <button type="button" class="btn btn-light">Start free trial</button>
+        <button type="button" class="btn btn-ghost">Talk to our team</button>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>All plans include a 30-day money-back guarantee. Prices are in Indian Rupees (₹) and are shown as an example.</p>
+    </footer>
+  </main>
+</body>
+</html>
